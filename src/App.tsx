@@ -6,6 +6,7 @@ import TaskList from './components/TaskList.tsx';
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<{ id: number; text: string; completed: boolean }[]>([]);
   const [completedTasks, setCompletedTasks] = useState<{ id: number; text: string; completed: boolean }[]>([]);
+  const [filter, setFilter] = useState<'all' | 'completed' | 'active'>('all'); // Храним текущий фильтр
 
   const handleAddTask = (text: string) => {
     const newTask = { id: tasks.length + 1, text, completed: false };
@@ -21,13 +22,26 @@ const App: React.FC = () => {
     }
   };
 
+  const handleFilterChange = (newFilter: 'all' | 'completed' | 'active') => {
+    setFilter(newFilter);
+  };
+
   return (
     <div className="App">
-      <h1>To-Do App</h1>
+      <h1>todos</h1>
       <AddTaskForm onAddTask={handleAddTask} />
-      <TaskList title="All Tasks" tasks={tasks} onTaskClick={handleTaskClick} />
-      <TaskList title="Incomplete Tasks" tasks={tasks} filter="incomplete" onTaskClick={handleTaskClick} />
-      <TaskList title="Completed Tasks" tasks={completedTasks} filter="completed" onTaskClick={() => {}} />
+      <TaskList
+        title=""
+        tasks={tasks.concat(completedTasks)} // Объединяем все задачи
+        filter={filter}
+        onTaskClick={handleTaskClick}
+      />
+
+      <div>
+        <button onClick={() => handleFilterChange('all')}>All</button>
+        <button onClick={() => handleFilterChange('active')}>Active</button>
+        <button onClick={() => handleFilterChange('completed')}>Completed</button>
+      </div>
     </div>
   );
 }

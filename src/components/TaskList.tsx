@@ -10,13 +10,13 @@ interface Task {
 interface Props {
   title: string;
   tasks: Task[];
-  filter?: 'all' | 'completed' | 'incomplete';
+  filter?: 'all' | 'completed' | 'active';
   onTaskClick: (taskId: number) => void;
 }
 
 const TaskList: React.FC<Props> = ({ title, tasks, filter = 'all', onTaskClick }) => {
   const filteredTasks = filter === 'completed' ? tasks.filter(task => task.completed) :
-                        filter === 'incomplete' ? tasks.filter(task => !task.completed) :
+                        filter === 'active' ? tasks.filter(task => !task.completed) :
                         tasks;
 
   return (
