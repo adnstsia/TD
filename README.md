@@ -7,6 +7,11 @@ This is a simple To-Do application built with TypeScript, React, and React Hooks
 - **AddTaskForm**: Component for adding a new task.
 - **TaskList**: Component for displaying a list of tasks.
 
+## Tests
+
+- **Validates** the display of the task list considering the selected filter.
+- **Validates** the functionality of adding a new task through the form.
+
 ## Usage
 
 1. Clone the repository.
