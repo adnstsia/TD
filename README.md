@@ -1,6 +1,6 @@
 # To-Do App
 ### Little tip for opening the project via the terminal:  
- _git clone https://github.com/adnstsia/td.git && cd td && npm i && npm start_   
+#### _git clone https://github.com/adnstsia/td.git && cd td && npm i && npm start_   
 
      
 This is a simple To-Do application built with TypeScript, React, and React Hooks.
